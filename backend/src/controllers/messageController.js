@@ -1,4 +1,4 @@
-import { sendWhatsAppMessage } from "../services/twilioService.js";
+import { sendWhatsAppMessage } from "../service/twilioService.js";
 
 export const sendMessage = async (req, res) => {
   const { name, phone, message } = req.body;
@@ -9,7 +9,6 @@ export const sendMessage = async (req, res) => {
       message: "Missing required fields: name, phone, message",
     });
   }
-
   try {
     const response = await sendWhatsAppMessage({ name, phone, message });
     res.status(200).json({
